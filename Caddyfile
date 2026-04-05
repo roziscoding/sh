@@ -1,0 +1,9 @@
+:80 {
+	root * /srv
+
+	@noext not path *.sh
+	rewrite @noext {path}.sh
+
+	header Content-Type text/plain
+	file_server
+}

@@ -1,0 +1,20 @@
+services:
+  caddy:
+    build: .
+    ports:
+      - "8080:80"
+    develop:
+      watch:
+        - action: sync
+          path: .
+          target: /srv/
+          ignore:
+            - Dockerfile
+            - docker-compose.yml
+            - Caddyfile
+            - CLAUDE.md
+            - README.md
+            - .git/
+        - action: sync+restart
+          path: Caddyfile
+          target: /etc/caddy/Caddyfile
