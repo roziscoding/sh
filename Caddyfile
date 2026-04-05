@@ -1,6 +1,10 @@
 :80 {
 	root * /srv
 
+	handle /health {
+		respond "OK" 200
+	}
+
 	@noext not path *.sh
 	rewrite @noext {path}.sh
 
