@@ -78,7 +78,7 @@ fi
 # --- Confirm ---
 
 echo ""
-read -p "Proceed with setup? [y/N] " confirm
+read -p "Proceed with setup? [y/N] " confirm </dev/tty
 if [[ ! "$confirm" =~ ^[yY]$ ]]; then
   echo "Aborted."
   exit 0
@@ -128,7 +128,7 @@ if $need_auth; then
   1password &
   echo ""
   echo "Please sign in to 1Password, then press any key to continue..."
-  read -n 1 -s -r
+  read -n 1 -s -r </dev/tty
 
   echo "==> Verifying 1Password CLI authentication..."
   if op account list &>/dev/null && [ "$(op account list 2>/dev/null)" != "" ]; then
